@@ -2,6 +2,7 @@
 using namespace std;
 void search(int,int,int,int,int*,int*);
 float xp,yp;
+static const float EPS = 1e-8;
 int main(){
   int n,m,p,q,cnt=0;
   int x[200],y[200];
@@ -51,16 +52,11 @@ void search(int c1p,int c1q,int c2p,int c2q,int x[200],int y[200]){
   a4 = y[c1q]-y[c1p];
   xp=10000;
   yp=10000;
-  //cout<<c1p<<endl<<c1q<<endl<<c2p<<endl<<c2q<<endl;
-  a=a1*a2+a3*a4;
-  //cout<<a<<endl;
-  if(a==0)return;
-  //cout<<"B";
+  a=abs(a1*a2+a3*a4);
+  if(a<=EPS&&a>=-EPS)return;
   s = ((y[c2p]-y[c2q])*(x[c2p]-x[c1p])+(x[c2q]-x[c2p])*(y[c2p]-y[c1p]))/a;
   t = ((y[c1p]-y[c1q])*(x[c2p]-x[c1p])+(x[c1q]-x[c1p])*(y[c2p]-y[c1p]))/a;
-  //cout<<s<<" "<<t<<endl;
   if(s>0&&s<1&&t>0&&t<1){
-  //cout<<"C"<<endl;
   xp = x[c1p]+a1*s;
   yp = y[c1p]+a4*s;
   }

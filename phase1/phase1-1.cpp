@@ -2,7 +2,7 @@
 using namespace std;
 bool search(int*,int*,int*,int*);
 double xp,yp;
-static const float EPS = 0.00000001;
+static const float EPS = 1e-8;
 int main(){
   int n,m,p,q;
   int x[4],y[4];
@@ -31,12 +31,10 @@ bool search(int c1[2],int c2[2],int x[4],int y[4]){
   a5 = x[c1[1]]-x[c1[0]];
   a6 = y[c1[1]]-y[c1[0]];
   a = abs(a1*a2 + a3*a4);
-  cout<<"a: "<<a<<endl;
   if(a<=EPS&&a>=-EPS)return false;
   s = (a2*a5+a3*a6)/a;
   t = ((-a4*a5)+(a1*a6))/a;
-  cout<<"s: "<<s<<endl<<"t: "<<t<<endl;
-  if(s>1||0>s&&t>1||0>t)return false;
+  if(s>=1||0>=s||t>=1||0>=t)return false;
   xp = x[c1[0]]+a1*s;
   yp = x[c1[1]]+a3*t;
   return true;
