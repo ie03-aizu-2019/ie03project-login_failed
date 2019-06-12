@@ -46,6 +46,7 @@ int main(){
 	crossx[j]=tmpx;
 	crossy[j]=tmpy;
     }
+   }
     for(i=0;i<cnt;i++)cout<<crossx[i]<<" "<<crossy[i]<<endl;
   }
 }
