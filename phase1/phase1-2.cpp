@@ -21,7 +21,7 @@ int main(){
   for(int i=0;i<m;i++){
     for(int j=i+1;j<m;j++){
       search(b[i],e[i],b[j],e[j],x,y);
-      if(xp!=10000||yp!=10000){
+      if(xp!=EPS||yp!=EPS){
 	crossx[cnt]=xp;
 	crossy[cnt]=yp;
 	cnt++;
@@ -38,6 +38,13 @@ int main(){
 	crossx[j]=tmpx;
 	crossy[j]=tmpy;
       }
+	else if(crossy[i]>crossy[j]){
+	tmpx=crossx[i];
+	tmpy=crossy[i];
+	crossx[i]=crossx[j];
+	crossy[i]=crossy[j];
+	crossx[j]=tmpx;
+	crossy[j]=tmpy;
     }
     for(i=0;i<cnt;i++)cout<<crossx[i]<<" "<<crossy[i]<<endl;
   }
@@ -50,8 +57,8 @@ void search(int c1p,int c1q,int c2p,int c2q,int x[200],int y[200]){
   a2 = y[c2p]-y[c2q];
   a3 = x[c2q]-x[c2p];
   a4 = y[c1q]-y[c1p];
-  xp=10000;
-  yp=10000;
+  xp=EPS;
+  yp=EPS;
   a=abs(a1*a2+a3*a4);
   if(a<=EPS&&a>=-EPS)return;
   s = ((y[c2p]-y[c2q])*(x[c2p]-x[c1p])+(x[c2q]-x[c2p])*(y[c2p]-y[c1p]))/a;
