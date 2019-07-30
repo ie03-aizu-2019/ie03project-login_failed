@@ -213,7 +213,7 @@ double dijkstra(vector<node>& nodes,int start,int goal){
   double cost;
   while(true){
     int doneNode = -1;
-    for(int i = 0; i < 9; i++){
+    for(int i = 0; i < nodes.size(); i++){
       if(nodes[i].done == true){
         continue;
       }
